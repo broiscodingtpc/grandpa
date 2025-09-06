@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grandpa Trench – Community Help (Pump.fun)</title>
+  <meta name="description" content="Not a takeover. A tiny website for the community helping an old guy trading on Pump.fun. Join the fun, keep it wholesome, and DYOR." />
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#121824; --ink:#e9f2ff; --muted:#98a2b3; --accent:#7cffe3; --accent2:#a683ff; --good:#45ffa8; --bad:#ff4d6d;
+      --glow:0 0 40px rgba(124,255,227,.35), 0 0 12px rgba(166,131,255,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;background:radial-gradient(1200px 600px at 80% 20%,rgba(124,255,227,.10),transparent),radial-gradient(900px 500px at 10% 90%,rgba(166,131,255,.12),transparent),var(--bg);color:var(--ink)}
+    a{color:var(--accent)}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:var(--glow);display:grid;place-items:center;font-weight:900;color:#081217}
+    .logo h1{font-size:18px;margin:0}
+    .pill{padding:8px 12px;border:1px solid #1e2633;border-radius:999px;background:#0d1320;color:var(--muted);display:flex;align-items:center;gap:10px}
+    .toggle{appearance:none;width:54px;height:30px;border-radius:999px;background:#1a2130;border:1px solid #2a3344;position:relative;cursor:pointer}
+    .toggle:before{content:"";position:absolute;inset:3px auto 3px 3px;width:24px;border-radius:50%;background:linear-gradient(180deg,#e9f2ff,#91a0b7);transition:.25s}
+    .toggle:checked{background:linear-gradient(90deg,#20304a,#2b3a59)}
+    .toggle:checked:before{left:27px;background:linear-gradient(180deg,#a6fff0,#7cffe3);box-shadow:0 0 10px rgba(124,255,227,.6)}
+    main{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:28px}
+    @media (max-width:900px){main{grid-template-columns:1fr}}
+
+    .card{background:linear-gradient(0deg,rgba(255,255,255,.02),rgba(255,255,255,.02)) , var(--card);border:1px solid #1d2431;border-radius:16px;padding:20px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+    .hero{position:relative;overflow:hidden}
+    .hero h2{font-size:34px;line-height:1.15;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 16px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid #263045;text-decoration:none;font-weight:600;background:#10192b}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.glow{background:linear-gradient(135deg,#10192b 0%,#15223a 60%);box-shadow:var(--glow)}
+
+    .ticker{display:flex;gap:16px;overflow:hidden;border-top:1px solid #1b2433;margin-top:14px;padding-top:12px}
+    .ticker span{white-space:nowrap;animation:scroll 26s linear infinite;color:#9fb3c7;opacity:.9}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+    .section h3{margin:0 0 8px;font-size:18px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:600px){.kpis{grid-template-columns:1fr 1fr}}
+    .kpi{padding:14px;border-radius:12px;border:1px solid #202a3b;background:#0e1422}
+    .kpi .n{font-size:22px;font-weight:800}
+    .copy-row{display:flex;gap:8px}
+    input[type=text]{flex:1;padding:12px 14px;border-radius:10px;border:1px solid #202a3b;background:#0d1321;color:var(--ink)}
+    .mini{font-size:12px;color:var(--muted)}
+
+    footer{opacity:.8;margin:22px 0 10px;text-align:center;color:#9fb3c7}
+    .tag{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #283246;background:#0d1423;color:#b7c6dd;font-size:12px}
+
+    .confetti{position:fixed;inset:0;pointer-events:none;}
+  </style>
+</head>
+<body>
+  <canvas class="confetti" id="confetti"></canvas>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#" aria-label="Grandpa Trench">
+        <div class="logo-badge">👴🏻</div>
+        <div>
+          <h1>Grandpa Trench</h1>
+          <div class="mini">Not a takeover • Community help</div>
+        </div>
+      </a>
+
+      <div class="pill">
+        <span class="mini">Help Mode</span>
+        <input id="help-toggle" type="checkbox" class="toggle" />
+      </div>
+    </header>
+
+    <main>
+      <section class="card hero">
+        <h2>We’re helping an old guy trade on <span style="text-shadow:0 0 18px rgba(124,255,227,.35)">Pump.fun</span> — with love, memes & restraint.</h2>
+        <p>
+          This page is a tiny hub for helpers. It’s <strong>not</strong> a community takeover. We’re just cheering on Grandpa, sharing tips, and keeping it wholesome. DYOR. No promises.
+        </p>
+        <div class="cta-row">
+          <a class="btn glow" target="_blank" rel="noopener" href="https://pump.fun/coin/5EKFigDd1fhbGxq8hVTzBMcGhJZ1rKxL5aZtPuYqpump">Open on Pump.fun ↗</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://t.me/grandpatrenchlive">Join Grandpa’s Telegram ↗</a>
+          <button class="btn" id="im-in">I’m In (count me)</button>
+        </div>
+        <div class="ticker" aria-hidden="true">
+          <span>💬 Be kind in chat • 🧢 No financial advice • 🫶 Help Grandpa, don’t bully • 🧭 Touch grass, drink water • 🪙 DYOR • </span>
+          <span>💬 Be kind in chat • 🧢 No financial advice • 🫶 Help Grandpa, don’t bully • 🧭 Touch grass, drink water • 🪙 DYOR • </span>
+        </div>
+      </section>
+
+      <aside class="card section">
+        <h3>Fast Links</h3>
+        <div style="display:grid;gap:10px">
+          <a class="btn" target="_blank" rel="noopener" href="https://pump.fun/coin/5EKFigDd1fhbGxq8hVTzBMcGhJZ1rKxL5aZtPuYqpump">Pump.fun Coin Page ↗</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://t.me/grandpatrenchlive">Telegram: @grandpatrenchlive ↗</a>
+        </div>
+        <div style="margin-top:14px" class="mini">If any link changes, ping the chat and we’ll update.</div>
+      </aside>
+
+      <section class="card section">
+        <h3>About This</h3>
+        <p>We saw Grandpa trading and decided to help, not hijack. Think: gentle coaching, memes for morale, and nudging away from bad decisions. If you’re here, keep it fun and human.</p>
+        <ul>
+          <li>✅ <strong>Community help</strong>, zero control.</li>
+          <li>✅ <strong>Transparency</strong>: nothing hidden, no secret team bag.</li>
+          <li>✅ <strong>Positive vibes</strong>: celebrate wins, laugh off losses.</li>
+        </ul>
+        <p class="mini">This site is fan‑made and unofficial. It’s just a link hub + vibes.</p>
+      </section>
+
+      <section class="card section">
+        <h3>Helper Tools</h3>
+        <div class="kpis">
+          <div class="kpi"><div class="mini">Helpers counted</div><div class="n" id="helpers">0</div></div>
+          <div class="kpi"><div class="mini">Help Mode</div><div class="n" id="helpstate">OFF</div></div>
+          <div class="kpi"><div class="mini">Last good deed</div><div class="n" id="lastdeed">—</div></div>
+        </div>
+        <div style="margin-top:14px;display:grid;gap:10px">
+          <div class="copy-row">
+            <input type="text" id="pumpurl" value="https://pump.fun/coin/5EKFigDd1fhbGxq8hVTzBMcGhJZ1rKxL5aZtPuYqpump" readonly />
+            <button class="btn" id="copy">Copy Link</button>
+          </div>
+          <div class="mini">Share the Pump.fun link with a friend who’ll keep Grandpa safe out there.</div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <span class="tag">Unofficial community help page</span>
+      <div class="mini" style="margin-top:8px">Made with ❤️ for Grandpa. Be nice, touch grass, and DYOR.</div>
+    </footer>
+  </div>
+
+  <script>
+    // simple confetti when Help Mode is toggled on or when someone clicks "I'm In"
+    const confettiCanvas = document.getElementById('confetti');
+    const cx = confettiCanvas.getContext('2d');
+    const parts = [];
+    function resize(){ confettiCanvas.width = innerWidth; confettiCanvas.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+    function burst(x=innerWidth/2, y=innerHeight/3){
+      for(let i=0;i<120;i++){
+        parts.push({x,y, vx:(Math.random()*2-1)*6, vy:(Math.random()*2-1)*6 - 4, r:Math.random()*3+1, a:1, s:Math.random()*120+80});
+      }
+    }
+    function tick(){
+      cx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+      for(let i=parts.length-1;i>=0;i--){
+        const p=parts[i]; p.vy+=0.08; p.x+=p.vx; p.y+=p.vy; p.a-=1/p.s; if(p.a<=0){parts.splice(i,1); continue;}
+        cx.globalAlpha = Math.max(p.a,0);
+        cx.beginPath(); cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        // cycle hues between accent colors without hard-coding specific colors
+        const hue = (i*7)%360; cx.fillStyle = `hsl(${hue} 90% 70%)`;
+        cx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    const helpersEl = document.getElementById('helpers');
+    const helpstateEl = document.getElementById('helpstate');
+    const lastdeedEl = document.getElementById('lastdeed');
+    const toggle = document.getElementById('help-toggle');
+    const btnIn = document.getElementById('im-in');
+    const copyBtn = document.getElementById('copy');
+    const urlInput = document.getElementById('pumpurl');
+
+    // persisted state
+    const state = JSON.parse(localStorage.getItem('grandpa-help')||'{}');
+    let helpers = state.helpers||0;
+    let helpMode = state.helpMode||false;
+    let lastDeed = state.lastDeed||'—';
+    helpersEl.textContent = helpers;
+    helpstateEl.textContent = helpMode? 'ON':'OFF';
+    toggle.checked = helpMode;
+    lastdeedEl.textContent = lastDeed;
+
+    toggle.addEventListener('change',()=>{
+      helpMode = toggle.checked; helpstateEl.textContent = helpMode? 'ON':'OFF';
+      localStorage.setItem('grandpa-help', JSON.stringify({helpers, helpMode, lastDeed}));
+      if(helpMode) burst(innerWidth*0.8, 80);
+    });
+
+    btnIn.addEventListener('click',()=>{
+      helpers++; helpersEl.textContent = helpers;
+      lastDeed = 'Signed up to help'; lastdeedEl.textContent = lastDeed;
+      localStorage.setItem('grandpa-help', JSON.stringify({helpers, helpMode, lastDeed}));
+      burst();
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(urlInput.value); copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy Link',1200); }
+      catch(e){ urlInput.select(); document.execCommand('copy'); copyBtn.textContent='Copied!'; setTimeout(()=>copyBtn.textContent='Copy Link',1200); }
+    });
+  </script>
+</body>
+</html>
